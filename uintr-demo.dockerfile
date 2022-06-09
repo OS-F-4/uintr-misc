@@ -61,7 +61,9 @@ RUN git clone https://github.com/Xiang-cd/uintr-linux-kernel.git \
     && echo "#!/bin/sh" > init \
     && echo "mount -t proc none /proc" >> init \
     && echo "mount -t sysfs none /sys" >> init \
+    && echo "mknod -m 666 /dev/ttyS0 c 4 64" >> init \
     && echo "echo -e \"Boot took \$(cut -d' ' -f1 /proc/uptime) seconds\"" >> init \
+    && echo "setsid cttyhack sh" >> init \
     && echo "exec /bin/sh" >> init \
     && chmod +x init \
     && find . -print0 | cpio --null -ov --format=newc | gzip -9 > ../initramfs-busybox-x86_64.cpio.gz \
