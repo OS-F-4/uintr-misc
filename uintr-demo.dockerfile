@@ -30,7 +30,7 @@ RUN wget https://busybox.net/downloads/busybox-1.35.0.tar.bz2 \
     && cd / \
     && mkdir -p initramfs/x86_64_busybox \
     && cd initramfs/x86_64_busybox \
-    && mkdir -p bin sbin etc proc sys usr/bin usr/sbin \
+    && mkdir -p bin sbin etc proc sys tmp usr/bin usr/sbin \
     && cp -a ../../busybox-1.35.0/build/_install/* . \
     && rm -rf /busybox-1.35.0
 
